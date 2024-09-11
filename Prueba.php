@@ -10,7 +10,7 @@ require ("logica/Administrador.php");
 </head>
 
 <body>
-    <h1>holaaa</h1>
+    <h1>cambio1</h1>
     <div class="container">
 		<div class="row mb-3">
 			<div class="col">
