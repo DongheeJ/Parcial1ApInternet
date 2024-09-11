@@ -1,6 +1,9 @@
 <?php
-require ("logica/Producto.php");
+require ("./persistencia/Conexion.php");
+require("logica/Producto.php");
+require("logica/Categoria.php");
 ?>
+
 <html>
 <head>
 <link
@@ -42,8 +45,13 @@ require ("logica/Producto.php");
 						href="#" role="button" data-bs-toggle="dropdown"
 						aria-expanded="false">Categoria</a>
 						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="ProductoCat.php?categoria=Nevera">Nevera</a></li>
-							<li><a class="dropdown-item" href="ProductoCat.php?categoria=Drones">Drones</a></li>
+							<?php
+							$categoria = new Categoria();
+							$categorias = $categoria->consultarTodos();
+							foreach($categorias as $temp){
+								echo '<li><a class="dropdown-item" href="#">' . $temp->getNombre() . '</a></li>';
+							}
+							?>
 						</ul></li>
 				</ul>
 			</div>
@@ -63,7 +71,7 @@ require ("logica/Producto.php");
                             if($i%4 == 0){
                                 echo "<div class='row mb-3'>";
                             }
-                            echo "<div class='col-lg-2 col-md-3 col-sm-4' >";
+                            echo "<div class='col-lg-3 col-md-4 col-sm-6' >";
                             echo "<div class='card text-bg-light'>";
                             echo "<div class='card-body'>";
                             echo "<div class='text-center'><img src='https://icons.iconarchive.com/icons/custom-icon-design/mono-general-1/256/faq-icon.png' width='70%' /></div>";
@@ -88,5 +96,6 @@ require ("logica/Producto.php");
 			</div>
 		</div>
 	</div>
+
 </body>
 </html>

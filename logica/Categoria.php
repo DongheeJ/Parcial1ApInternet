@@ -1,5 +1,5 @@
 <?php
-require ("./persistencia/Conexion.php");
+
 require ("./persistencia/CategoriaDAO.php");
 class Categoria{
     private $idCategoria;
