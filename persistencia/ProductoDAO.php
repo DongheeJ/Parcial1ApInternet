@@ -19,7 +19,8 @@ class ProductoDAO{
                 from Producto";
     }
     public function joinWith_M_C(){
-        return "SELECT p.nombre,p.cantidad,p.precioCompra,p.precioVenta,m.nombre,c.nombre 
+        return "SELECT p.idProducto,p.nombre,p.cantidad,p.precioCompra,p.precioVenta,
+        m.idMarca,m.nombre,c.idCategoria,c.nombre 
         from Producto as p 
         JOIN Marca as m on p.Marca_idMarca = m.idMarca 
         JOIN Categoria as c ON c.idCategoria = p.Categoria_idCategoria;";

@@ -1,6 +1,6 @@
 <?php
 require ("Persona.php");
-require ("./persistencia/Conexion.php");
+require_once ("./persistencia/Conexion.php");
 require ("./persistencia/ClienteDAO.php");
 class Cliente extends Persona{
     public function __construct($idPersona=0,$nombre="",$apellido="",$correo="",$clave=0) {

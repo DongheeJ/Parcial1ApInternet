@@ -1,7 +1,7 @@
 <?php
-require ("./persistencia/Conexion.php");
 require("logica/Producto.php");
-require("logica/Categoria.php");
+require_once("logica/Categoria.php");
+require_once("logica/Marca.php");
 ?>
 
 <html>
@@ -36,8 +36,13 @@ require("logica/Categoria.php");
 						href="#" role="button" data-bs-toggle="dropdown"
 						aria-expanded="false">Marca</a>
 						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="#">Marca 1</a></li>
-							<li><a class="dropdown-item" href="#">Marca 2</a></li>
+							<?php
+							$marca = new Marca();
+							$marcas = $marca->consultarTodos();
+							foreach($marcas as $temp){
+								echo '<li><a class="dropdown-item" href="#">' . $temp->getNombre() . '</a></li>';
+							}
+							?>
 						</ul></li>
 				</ul>
 				<ul class="navbar-nav">
@@ -66,7 +71,7 @@ require("logica/Categoria.php");
     					<?php
     					$i=0;
                         $producto = new Producto();
-                        $productos = $producto->consultarTodos();
+                        $productos = $producto->joinWith_M_C();
                         foreach ($productos as $productoActual) {
                             if($i%4 == 0){
                                 echo "<div class='row mb-3'>";
@@ -77,7 +82,9 @@ require("logica/Categoria.php");
                             echo "<div class='text-center'><img src='https://icons.iconarchive.com/icons/custom-icon-design/mono-general-1/256/faq-icon.png' width='70%' /></div>";
                             echo "<a href='#'>" . $productoActual->getNombre() . "</a><br>";
                             echo "Cantidad: " . $productoActual->getCantidad() . "<br>";
-                            echo "Valor: $" . $productoActual->getPrecioVenta();
+                            echo "Valor: $" . $productoActual->getPrecioVenta() . "<br>";
+							echo "Categoria: $" . $productoActual->getCategoria() ->getNombre() . "<br>";
+							echo "Marca: $" . $productoActual->getMarca() ->getNombre() . "<br>";
                             echo "</div>";
                             echo "</div>";
                             echo "</div>";

@@ -7,7 +7,9 @@
             $this->nombre=$nombre;
         }
         public function consultarTodos(){
-            return "SELECT idCategoria,nombre FROM Categoria;";
+            return "select idCategoria, nombre
+                    from Categoria
+                    order by nombre asc";
         }
     }
 ?>

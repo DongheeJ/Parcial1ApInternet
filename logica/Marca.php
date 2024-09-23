@@ -1,5 +1,5 @@
 <?php
-require ("./persistencia/Conexion.php");
+require_once ("./persistencia/Conexion.php");
 require ("./persistencia/MarcaDAO.php");
 class Marca{
     private $idMarca;

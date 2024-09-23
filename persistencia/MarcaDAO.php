@@ -7,7 +7,9 @@
             $this->nombre=$nombre;
         }
         public function consultarTodos(){
-            return "SELECT * FROM Marca;";
+            return "select idMarca, nombre
+                    from Marca
+                    order by nombre asc";
         }
     }
 ?>
